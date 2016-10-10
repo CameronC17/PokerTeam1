@@ -12,6 +12,17 @@ var _pcards = [
 var _pchips = [
 ];
 
+var _users= [
+  {
+    username: "laura",
+    password: "laura"
+  },
+  {
+    username: "edd",
+    password: "edd"
+  },
+];
+
 var _currentPage= "Homepage";
 
 var TCardStore = merge(EventEmitter.prototype , {

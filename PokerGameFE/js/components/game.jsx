@@ -7,21 +7,21 @@ var Game = React.createClass({
 
   return (
     <div className="game">
-        <div class="table">
+        <div className="table">
             <table>
-                <tr class="top">
+                <tr className="top">
                     <td id="top-left">
                     </td>
                     <td id="top-middle">
-                      <div class="deck">
-                      <div class="deck-card">
+                      <div className="deck">
+                      <div className="deck-card">
                       </div>
                     </div>
                     </td>
                     <td id="top-right">
                     </td>
                 </tr>
-                <tr class="bottom">
+                <tr className="bottom">
                     <td id="bottom-left">
                     </td>
                     <td id="bottom-middle">
@@ -34,26 +34,23 @@ var Game = React.createClass({
             </table>
 
         </div>
-        <div class="seat" id="seat1">
-          <p class="playerseat">Player1</p>
+        <div className="seat" id="seat1">
+          <p className="playerseat">Player1</p>
         </div>
-        <div class="seat" id="seat2">
-          <p class="playerseat">Player2</p>
+        <div className="seat" id="seat2">
+          <p className="playerseat">Player2</p>
         </div>
-        <div class="seat" id="seat3">
-          <p class="playerseat">Player3</p>
+        <div className="seat" id="seat3">
+          <p className="playerseat">Player3</p>
         </div>
-        <div class="seat" id="seat4">
-          <p class="playerseat">Player4</p>
+        <div className="seat" id="seat4">
+          <p className="playerseat">Player4</p>
         </div>
-        <div class="seat" id="seat5">
-          <p class="playerseat">Player5</p>
+        <div className="seat" id="seat5">
+          <p className="playerseat">Player5</p>
         </div>
-        <div class="gamecontent">
-            <div class="singlemultiplayer">
-                <button type="button" id="single">Single</button>
-                <button type="button" id="multiplayer">Multiplayer</button>
-            </div>
+        <div className="gamecontent">
+
 
             <div id="gamebuttons">
                 <label for="stake">Stake:</label><br />
