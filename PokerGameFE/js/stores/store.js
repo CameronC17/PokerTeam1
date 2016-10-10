@@ -66,8 +66,10 @@ function handleAction(payload){
   }
   else if(payload.action == Constants.LOGIN_ACTION) {
     for (var i= 0; i < _users.length; i++){
-      if(payload.user == _users[i]){
+      console.log(payload.user, _users[i]);
+      if(payload.user.username == _users[i].username && payload.user.password == _users[i].password){
         _currentPage = "gamepage";
+        console.log(_currentPage);
       }
     }
     
