@@ -3,6 +3,13 @@ var appDispatcher = require('../dispatchers/appDispatcher.js');
 
 var NavBar = React.createClass({
 
+  handleClick: function(event) {
+    appDispatcher.dispatch({
+      action: Constants.LOAD_PAGE,
+      page: event.target.id
+    });
+  },
+
   render: function() {
 
   return (
@@ -12,10 +19,10 @@ var NavBar = React.createClass({
 
         </div>
         <div id="links">
-            <a className="button" id="homepage">Home</a>
-            <a className="button" id="registerpage">Register</a>
-            <a className="button" id="loginpage">Login</a>
-            <a className="button" id="gamepage">Game</a>
+            <a className="button" id="homepage" onClick={this.handleClick}>Home</a>
+            <a className="button" id="registerpage" onClick={this.handleClick}>Register</a>
+            <a className="button" id="loginpage" onClick={this.handleClick}>Login</a>
+            <a className="button" id="gamepage" onClick={this.handleClick}>Game</a>
         </div>
     </div>
   )

@@ -1,4 +1,6 @@
 var EventEmitter = require('events').EventEmitter;
+var appDispatcher = require('../dispatchers/appDispatcher.js');
+var Constants = require('../constants/constants.js');
 var merge = require('merge');
 
 var _tcards = [
@@ -46,8 +48,6 @@ var CurrentPage = merge(EventEmitter.prototype , {
 
 appDispatcher.register(handleAction);
 function handleAction(payload){
-  _currentPage =payload;
-
   if(payload.action == Constants.LOAD_PAGE) {
     _currentPage = payload.page;
     CurrentPage.emit('update');
@@ -55,8 +55,8 @@ function handleAction(payload){
 }
 
 module.exports ={
-  TCardStore: tcardstore,
-  PCardStore: pcardstore,
-  PChipStore: pchipstore,
-  CurrentPage: currentpage
+  TCardStore: TCardStore,
+  PCardStore: PCardStore,
+  PChipStore: PChipStore,
+  CurrentPage: CurrentPage
 };
