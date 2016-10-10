@@ -58,9 +58,19 @@ var CurrentPage = merge(EventEmitter.prototype , {
 });
 
 appDispatcher.register(handleAction);
+
 function handleAction(payload){
   if(payload.action == Constants.LOAD_PAGE) {
     _currentPage = payload.page;
+    CurrentPage.emit('update');
+  }
+  else if(payload.action == Constants.LOGIN_ACTION) {
+    for (var i= 0; i < _users.length; i++){
+      if(payload.user == _users[i]){
+        _currentPage = "gamepage";
+      }
+    }
+    
     CurrentPage.emit('update');
   }
 }

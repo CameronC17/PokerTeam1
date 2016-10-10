@@ -14,18 +14,20 @@ var Login = React.createClass({
 
   appDispatcher.dispatch({
     action: Constants.LOGIN_ACTION,
-    username: this.state.username,
-    password: this.state.password
+    user: {
+      username: this.state.username,
+      password: this.state.password
+  }
   });
 },
 
-  handlePasswordChange : function() {
+  handlePasswordChange : function(e) {
 
     this.setState({
       password: e.target.value
     });
 },
-  handleUsernameChange : function() {
+  handleUsernameChange : function(e) {
 
   this.setState({
     username: e.target.value
