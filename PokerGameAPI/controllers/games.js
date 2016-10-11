@@ -68,11 +68,12 @@ function performCommand(gameID, req, res){
   }else{
     if(req.body.bet > 0){
       tables[gameID[0]].actionBet(gameID[1], req.body.bet);
-    }else if(req.body.call == 'true'){
+    }else if(req.body.call){
       tables[gameID[0]].actionCall(gameID[1]);
-    }else if(req.body.check == 'true'){
+    }else if(req.body.check){
+      console.log("check is true");
       tables[gameID[0]].actionCheck(gameID[1]);
-    }else if(req.body.fold == 'true'){
+    }else if(req.body.fold){
       tables[gameID[0]].actionFold(gameID[1]);
     }
   res.json({"cards" : tables[gameID[0]].getTableCards(), "chips" : tables[gameID[0]].getTableChips(), "pot" : tables[gameID[0]].pot, "turn" : tables[gameID[0]].turnCounter, "winner" : tables[gameID[0]].winner });

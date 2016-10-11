@@ -83,7 +83,6 @@ Game.prototype.actionFold = function(seatPosition) {
       this.actionTime(this.turnCounter);
 };
 Game.prototype.actionCheck = function(seatPosition) {
-    // console.log(seatPosition + ' check')
       console.log("Player " + this.turnCounter + " has just checked");
       this.players[this.turnCounter].command= 'check';
       this.turnCounter++;
