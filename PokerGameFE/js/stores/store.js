@@ -119,14 +119,13 @@ function handleAction(payload) {
     else if (payload.action == Constants.LOGIN_ACTION) {
         var result= axios.post("http://localhost:3000/api/users/login", {username: payload.user.username, password: payload.user.password})
              .then(function(result){
-               if(result.statusCode== 200){
+                console.log(result.status);
+                if(result.status== 200){
                  _currentPage = "gamepage";
                   console.log(_currentPage);
-               }
-               CurrentPage.emit('update');
+                }
+                CurrentPage.emit('update');
              });
-              console.log(result);
-              console.log(payload.user.username);
         // for (var i = 0; i < _users.length; i++) {
         //     console.log(payload.user, _users[i]);
         //     if (payload.user.username == _users[i].username && payload.user.password == _users[i].password) {

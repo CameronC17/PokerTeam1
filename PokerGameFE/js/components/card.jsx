@@ -26,7 +26,6 @@ var Card = React.createClass({
           <p className= "suit" style={color}>{this.props.suit}</p>
           <p className="cardtype" style={color}>{this.props.cardValue}</p>
           <p className="upsidedown suit" style={color}>{this.props.suit}</p>
-
         </div>
   )
 }
