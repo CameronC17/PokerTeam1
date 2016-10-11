@@ -1,6 +1,7 @@
 var Constants = require('../constants/constants.js');
 var appDispatcher = require('../dispatchers/appDispatcher.js');
 var Table = require('./table.jsx');
+var Seat= require('./seat.jsx');
 
 
 var Game = React.createClass({
@@ -21,22 +22,8 @@ var Game = React.createClass({
 
   return (
     <div className="game">
-      <Table />
-        <div className="seat" id="seat1">
-          <p className="playerseat">Player1</p>
-        </div>
-        <div className="seat" id="seat2">
-          <p className="playerseat">Player2</p>
-        </div>
-        <div className="seat" id="seat3">
-          <p className="playerseat">Player3</p>
-        </div>
-        <div className="seat" id="seat4">
-          <p className="playerseat">Player4</p>
-        </div>
-        <div className="seat" id="seat5">
-          <p className="playerseat">Player5</p>
-        </div>
+        <Table />
+        <Seat />
         <div className="gamecontent">
 
 

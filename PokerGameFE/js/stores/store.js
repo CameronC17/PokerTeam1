@@ -12,6 +12,8 @@ var _pcards = [];
 
 var _pchips = [];
 
+var _currentPlayer= 0;
+
 
 var _currentPage = "Homepage";
 
@@ -45,6 +47,11 @@ var CurrentPage = merge(EventEmitter.prototype, {
         return _currentPage
     }
 
+});
+var CurrentPlayer = merge(EventEmitter.prototype,{
+    getPlayer: function(){
+      return _currentPlayer
+    }
 });
 
 appDispatcher.register(handleAction);
@@ -82,6 +89,8 @@ function handleAction(payload) {
     else if (payload.action == Constants.ACTION_CHECK) {
       var result= axios.post("http://localhost:3000/api/games", {user: window.localStorage.user, bet: false, call: false, check: true, fold: false})
            .then(function(result){
+
+             _currentPlayer= result.data.turn;
                if (result.data.cards.length > 0) {
                    _tcards = result.data.cards;
                    TCardStore.emit('update');
@@ -92,7 +101,6 @@ function handleAction(payload) {
     else if (payload.action == Constants.START_GAME) {
       var result= axios.post("http://localhost:3000/api/games/new", {user: window.localStorage.user})
            .then(function(result){
-
              _pcards = result.data;
              PCardStore.emit('update');
              console.log(result);
@@ -105,5 +113,6 @@ function handleAction(payload) {
         TCardStore: TCardStore,
         PCardStore: PCardStore,
         PChipStore: PChipStore,
+        CurrentPlayer: CurrentPlayer,
         CurrentPage: CurrentPage
     };
