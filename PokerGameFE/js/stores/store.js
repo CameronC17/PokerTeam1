@@ -20,7 +20,7 @@ var _users= [
   {
     username: "edd",
     password: "edd"
-  },
+  }
 ];
 
 var _currentPage= "Homepage";
@@ -57,6 +57,17 @@ var CurrentPage = merge(EventEmitter.prototype , {
 
 });
 
+loadpage: function(){
+   var self= this;
+   axios.get("http://localhost:3000/api/users/login")
+        .then(function(result){
+          self.setState({
+            username: result.data,
+            password: result.data
+          })
+        });
+    },
+
 appDispatcher.register(handleAction);
 
 function handleAction(payload){
@@ -72,7 +83,7 @@ function handleAction(payload){
         console.log(_currentPage);
       }
     }
-    
+
     CurrentPage.emit('update');
   }
 }
