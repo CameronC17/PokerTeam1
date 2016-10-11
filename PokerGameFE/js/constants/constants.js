@@ -1,5 +1,5 @@
 module.exports = {
-  START_GAME : "startgame",
+    START_GAME : "startgame",
 
     ACTION_CHECK : "actioncheck",
     ACTION_FOLD : "actionfold",
