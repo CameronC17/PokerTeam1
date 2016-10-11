@@ -1,6 +1,7 @@
 var Constants = require('../constants/constants.js');
 var appDispatcher = require('../dispatchers/appDispatcher.js');
 var TableCards= require('./tableCards.jsx');
+
 var Player= require('./player.jsx');
 
 var Table = React.createClass({
@@ -13,24 +14,24 @@ var Table = React.createClass({
               <tbody>
                 <tr className="top">
                     <td id="top-left">
-                      <Player />
+                      <Player index={0}/>
                     </td>
                     <td id="top-middle">
                       <TableCards />
                     </td>
                     <td id="top-right">
-                      <Player />
+                      <Player index={1} />
                     </td>
                 </tr>
                 <tr className="bottom">
                     <td id="bottom-left">
-                      <Player />
+                      <Player index={2} />
                     </td>
                     <td id="bottom-middle">
-                        <Player />
+                        <Player index={3}/>
                     </td>
                     <td id="bottom-right">
-                      <Player />
+                      <Player index={4}/>
                     </td>
                 </tr>
                 </tbody>

@@ -27,17 +27,13 @@ var TableCards = React.createClass({
     render: function() {
       var cards = this.state.tableCards.map(function(card, index){
       return (
-        <Card key={index} suit={card.suit} value={card.cardvalue}/>
+        <Card key={index} suit={card.suit} cardValue={card.cardValue}/>
       )
     });
 
         return (
             <div className="tableCards">
               {cards}
-                <div className="deck">
-                    <div className="deck-card"></div>
-                </div>
-                <Card />
             </div>
         )
     }

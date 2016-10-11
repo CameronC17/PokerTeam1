@@ -10,7 +10,7 @@ var Player = React.createClass({
   return (
         <div className="player">
           <Chips />
-          <PlayerCards />
+          <PlayerCards index={this.props.index} />
         </div>
   )
 }

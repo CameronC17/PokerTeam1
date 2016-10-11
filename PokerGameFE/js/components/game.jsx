@@ -7,8 +7,13 @@ var Game = React.createClass({
 
   handleStart: function(){
       appDispatcher.dispatch({
-        action: Constants.LOAD_PAGE,
+        action: Constants.START_GAME,
         page: event.target.id
+      });
+  },
+  handleCheck: function(){
+      appDispatcher.dispatch({
+        action: Constants.ACTION_CHECK
       });
   },
 
