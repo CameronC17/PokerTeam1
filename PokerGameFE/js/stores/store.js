@@ -57,16 +57,16 @@ var CurrentPage = merge(EventEmitter.prototype , {
 
 });
 
-loadpage: function(){
-   var self= this;
-   axios.get("http://localhost:3000/api/users/login")
-        .then(function(result){
-          self.setState({
-            username: result.data,
-            password: result.data
-          })
-        });
-    },
+// loadpage: function(){
+//    var self= this;
+//    axios.get("http://localhost:3000/api/users/login")
+//         .then(function(result){
+//           self.setState({
+//             username: result.data,
+//             password: result.data
+//           })
+//         });
+//     },
 
 appDispatcher.register(handleAction);
 
