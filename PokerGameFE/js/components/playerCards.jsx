@@ -30,7 +30,7 @@ var PlayerCards = React.createClass({
     if(this.state.playerCards != null){
       var cards = this.state.playerCards.map(function(card, index){
       return (
-        <Card key={index} suit={card.suit} cardValue={card.cardValue}/>
+        <Card key={index} suit={card.suit} cardValue={card.value}/>
       )
 
     });

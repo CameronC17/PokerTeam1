@@ -116,6 +116,8 @@ function handleAction(payload) {
              .then(function(result){
                 console.log(result.status);
                 if(result.status== 200){
+                  window.localStorage.setItem('user', result.data.user);
+                  window.localStorage.setItem('username', result.data.username);
                  _currentPage = "gamepage";
                   console.log(_currentPage);
                 }
@@ -134,12 +136,23 @@ function handleAction(payload) {
            });
     }
     else if (payload.action == Constants.ACTION_CHECK) {
-            _tcards = dummyTCards;
-            TCardStore.emit('update');
+      var result= axios.post("http://localhost:3000/api/games", {user: window.localStorage.user, bet: false, call: false, check: true, fold: false})
+           .then(function(result){
+
+            //  _tcards = result.data;
+            //  TCardStore.emit('update');
+             console.log(result);
+           });
+
     }
     else if (payload.action == Constants.START_GAME) {
-            _pcards = dummyPCards;
-            PCardStore.emit('update');
+      var result= axios.post("http://localhost:3000/api/games/new", {user: window.localStorage.user})
+           .then(function(result){
+
+             _pcards = result.data;
+             PCardStore.emit('update');
+             console.log(result);
+           });
     }
 
     }
