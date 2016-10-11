@@ -97,6 +97,33 @@ function handleAction(payload) {
            });
 
     }
+    else if (payload.action == Constants.ACTION_FOLD) {
+      var result= axios.post("http://localhost:3000/api/games", {user: window.localStorage.user, bet: false, call: false, check: false, fold: true})
+           .then(function(result){
+             _currentPlayer= result.data.turn;
+              TCardStore.emit('update');
+              console.log("fold");
+           });
+
+    }
+    else if (payload.action == Constants.ACTION_CALL) {
+      var result= axios.post("http://localhost:3000/api/games", {user: window.localStorage.user, bet: false, call: true, check: false, fold: false})
+           .then(function(result){
+             _currentPlayer= result.data.turn;
+              TCardStore.emit('update');
+              console.log("call");
+           });
+
+    }
+    else if (payload.action == Constants.ACTION_BET) {
+      var result= axios.post("http://localhost:3000/api/games", {user: window.localStorage.user, bet: payload.bet, call: false, check: false, fold: false})
+           .then(function(result){
+             _currentPlayer= result.data.turn;
+              TCardStore.emit('update');
+              console.log("bet");
+           });
+
+    }
     else if (payload.action == Constants.START_GAME) {
       var result= axios.post("http://localhost:3000/api/games/new", {user: window.localStorage.user})
            .then(function(result){
