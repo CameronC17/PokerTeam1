@@ -4,6 +4,23 @@ var appDispatcher = require('../dispatchers/appDispatcher.js');
 var Card = React.createClass({
 
     render: function() {
+      switch (this.props.cardValue) {
+        case 11:
+          var value = "J";
+          break;
+        case 12:
+          var value = "Q";
+          break;
+        case 13:
+          var value = "K";
+          break;
+        case 14:
+          var value = "A";
+          break;
+        default:
+        var value= this.props.cardValue;
+          break;
+      }
         switch (this.props.suit) {
             case("spade"):
                 var suit = "\u2660";
@@ -19,7 +36,7 @@ var Card = React.createClass({
                 break;
             default:
         }
-        
+
         switch (suit) {
             case("\u2666"):
                 var color = {
@@ -48,7 +65,7 @@ var Card = React.createClass({
         return (
             <div className="card">
                 <p className="suit" style={color}>{suit}</p>
-                <p className="cardtype" style={color}>{this.props.cardValue}</p>
+                <p className="cardtype" style={color}>{value}</p>
                 <p className="upsidedown suit" style={color}>{suit}</p>
             </div>
         )

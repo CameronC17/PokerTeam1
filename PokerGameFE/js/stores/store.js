@@ -3,57 +3,8 @@ var appDispatcher = require('../dispatchers/appDispatcher.js');
 var Constants = require('../constants/constants.js');
 var merge = require('merge');
 
-
 var gameStage= 0;
 
-var dummyTCards = [{
-    suit: "\u2666",
-    cardValue: "2"
-}, {
-    suit: "\u2666",
-    cardValue: "10"
-}, {
-    suit: "\u2666",
-    cardValue: "K"
-}];
-
-var dummyPCards = [
-    [{
-        suit: "\u2666",
-        cardValue: "6"
-    }, {
-        suit: "\u2665",
-        cardValue: "3"
-    }],
-    [{
-        suit: "\u2666",
-        cardValue: "K"
-    }, {
-        suit: "\u2660",
-        cardValue: "Q"
-    }],
-    [{
-        suit: "\u2666",
-        cardValue: "K"
-    }, {
-        suit: "\u2666",
-        cardValue: "Q"
-    }],
-    [{
-        suit: "\u2665",
-        cardValue: "K"
-    }, {
-        suit: "\u2666",
-        cardValue: "Q"
-    }],
-    [{
-        suit: "\u2663",
-        cardValue: "K"
-    }, {
-        suit: "\u2666",
-        cardValue: "Q"
-    }]
-];
 
 var _tcards = [];
 
@@ -61,13 +12,6 @@ var _pcards = [];
 
 var _pchips = [];
 
-var _users = [{
-    username: "laura",
-    password: "laura"
-}, {
-    username: "edd",
-    password: "edd"
-}];
 
 var _currentPage = "Homepage";
 
