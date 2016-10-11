@@ -74,6 +74,7 @@ function handleAction(payload){
     }
     
     CurrentPage.emit('update');
+    return {status: true};
   }
 }
 
