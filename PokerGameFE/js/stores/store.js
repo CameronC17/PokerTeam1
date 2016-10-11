@@ -89,12 +89,11 @@ function handleAction(payload) {
     else if (payload.action == Constants.ACTION_CHECK) {
       var result= axios.post("http://localhost:3000/api/games", {user: window.localStorage.user, bet: false, call: false, check: true, fold: false})
            .then(function(result){
-
              _currentPlayer= result.data.turn;
                if (result.data.cards.length > 0) {
                    _tcards = result.data.cards;
-                   TCardStore.emit('update');
                }
+               TCardStore.emit('update');
            });
 
     }
