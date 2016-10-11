@@ -18,8 +18,8 @@ var Card = React.createClass({
                 var suit = "\u2663";
                 break;
             default:
-
         }
+        
         switch (suit) {
             case("\u2666"):
                 var color = {
