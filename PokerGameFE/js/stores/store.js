@@ -83,10 +83,20 @@ function handleAction(payload){
         console.log(_currentPage);
       }
     }
-
     CurrentPage.emit('update');
     return {status: true};
   }
+
+  else if(payload.action == Constants.REGISTER_ACTION) {
+      console.log(payload.user, _users[i]);
+      _users.push(payload.user);
+      _currentPage = "loginpage";
+      console.log(_currentPage);
+
+      CurrentPage.emit('update');
+      return {status: true};
+  }
+
 }
 
 module.exports ={

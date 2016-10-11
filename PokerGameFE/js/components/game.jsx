@@ -1,5 +1,7 @@
 var Constants = require('../constants/constants.js');
 var appDispatcher = require('../dispatchers/appDispatcher.js');
+var Table = require('./table.jsx');
+
 
 var Game = React.createClass({
 
@@ -7,33 +9,7 @@ var Game = React.createClass({
 
   return (
     <div className="game">
-        <div className="table">
-            <table>
-                <tr className="top">
-                    <td id="top-left">
-                    </td>
-                    <td id="top-middle">
-                      <div className="deck">
-                      <div className="deck-card">
-                      </div>
-                    </div>
-                    </td>
-                    <td id="top-right">
-                    </td>
-                </tr>
-                <tr className="bottom">
-                    <td id="bottom-left">
-                    </td>
-                    <td id="bottom-middle">
-
-                    </td>
-                    <td id="bottom-right">
-
-                    </td>
-                </tr>
-            </table>
-
-        </div>
+      <Table />
         <div className="seat" id="seat1">
           <p className="playerseat">Player1</p>
         </div>
