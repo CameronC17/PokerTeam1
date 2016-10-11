@@ -4,6 +4,7 @@ var appDispatcher = require('../dispatchers/appDispatcher.js');
 var NavBar = React.createClass({
 
   handleClick: function(event) {
+    console.log("fdgfdg");
     appDispatcher.dispatch({
       action: Constants.LOAD_PAGE,
       page: event.target.id

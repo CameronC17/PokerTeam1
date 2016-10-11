@@ -3,6 +3,21 @@ var appDispatcher = require('../dispatchers/appDispatcher.js');
 var Constants = require('../constants/constants.js');
 var merge = require('merge');
 
+var dummyTCards=[
+  {
+    suit: "&#9830",
+    cardvalue: 2
+  },
+  {
+    suit: "&#9830",
+    cardvalue: 10
+  },
+  {
+    suit: "&#9830",
+    cardvalue: "K"
+  }
+];
+
 var _tcards = [
 ];
 
@@ -72,6 +87,7 @@ appDispatcher.register(handleAction);
 
 function handleAction(payload){
   if(payload.action == Constants.LOAD_PAGE) {
+    console.log(payload.action);
     _currentPage = payload.page;
     CurrentPage.emit('update');
   }
@@ -95,6 +111,11 @@ function handleAction(payload){
 
       CurrentPage.emit('update');
       return {status: true};
+  }
+  else if (payload.action == Constants.START_GAME){
+    _tcards = dummyTCards;
+    TCardStore.emit('update');
+
   }
 
 }

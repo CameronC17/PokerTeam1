@@ -10,13 +10,13 @@ var Table = React.createClass({
   return (
         <div className="table">
             <table>
+              <tbody>
                 <tr className="top">
                     <td id="top-left">
                       <Player />
                     </td>
                     <td id="top-middle">
                       <TableCards />
-                    </div>
                     </td>
                     <td id="top-right">
                       <Player />
@@ -33,6 +33,7 @@ var Table = React.createClass({
                       <Player />
                     </td>
                 </tr>
+                </tbody>
             </table>
 
         </div>

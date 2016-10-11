@@ -7,6 +7,7 @@ var Card = React.createClass({
 
   return (
         <div className="card">
+          <p>{this.props.suit}</p>
 
         </div>
   )
