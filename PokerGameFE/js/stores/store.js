@@ -103,11 +103,6 @@ var CurrentPage = merge(EventEmitter.prototype, {
 
 });
 
-function loginRequest(username, password){
-
-
-    }
-
 appDispatcher.register(handleAction);
 
 function handleAction(payload) {
@@ -126,28 +121,17 @@ function handleAction(payload) {
                 }
                 CurrentPage.emit('update');
              });
-        // for (var i = 0; i < _users.length; i++) {
-        //     console.log(payload.user, _users[i]);
-        //     if (payload.user.username == _users[i].username && payload.user.password == _users[i].password) {
-        //         _currentPage = "gamepage";
-        //         console.log(_currentPage);
-        //     }
-        // }
-        // CurrentPage.emit('update');
-        // return {
-        //     status: true
-        // };
     }
     else if (payload.action == Constants.REGISTER_ACTION) {
-        console.log(payload.user, _users[i]);
-        _users.push(payload.user);
-        _currentPage = "loginpage";
-        console.log(_currentPage);
-
-        CurrentPage.emit('update');
-        return {
-            status: true
-        };
+      var result= axios.post("http://localhost:3000/api/users", {username: payload.user.username, password: payload.user.password})
+           .then(function(result){
+              console.log(result.status);
+              if(result.status== 201){
+               _currentPage = "loginpage";
+                console.log(_currentPage);
+              }
+              CurrentPage.emit('update');
+           });
     }
     else if (payload.action == Constants.ACTION_CHECK) {
             _tcards = dummyTCards;
