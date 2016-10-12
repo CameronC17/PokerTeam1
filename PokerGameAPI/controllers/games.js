@@ -10,6 +10,7 @@ function joinPool(req, res) {
     //in here we can check if we are going to do singl=e player or multiplayer
     //if (req.body.gameMode == "multi") etc etc etc
     getUserCredentials(req.body.user, addUserToPool, req, res);
+    console.log(req.body.user);
   } else {
     res.send(403);
   }
@@ -71,7 +72,7 @@ function performCommand(gameID, req, res){
     }else if(req.body.call){
       tables[gameID[0]].actionCall(gameID[1]);
     }else if(req.body.check){
-      console.log("check is true");
+      console.log(req.body.check);
       tables[gameID[0]].actionCheck(gameID[1]);
     }else if(req.body.fold){
       tables[gameID[0]].actionFold(gameID[1]);
