@@ -6,29 +6,9 @@ var Store= require('../stores/store.js');
 
 var PlayerCards = React.createClass({
 
-  componentDidMount : function() {
-
-      Store.PCardStore.on('update' , this.handleUpdate);
-
-  },
-
-  getInitialState: function() {
-      var card = Store.PCardStore.getPCards(this.props.index);
-
-      return {
-          playerCards: card
-      }
-  },
-
-  handleUpdate : function() {
-      this.setState({
-          playerCards: Store.PCardStore.getPCards(this.props.index)
-      })
-  },
-
     render: function() {
-    if(this.state.playerCards != null){
-      var cards = this.state.playerCards.map(function(card, index){
+    if(this.props.playerCards != null){
+      var cards = this.props.playerCards.map(function(card, index){
       return (
         <Card key={index} suit={card.suit} cardValue={card.value}/>
       )

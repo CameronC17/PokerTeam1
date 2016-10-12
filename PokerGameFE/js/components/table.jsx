@@ -20,18 +20,18 @@ var Table = React.createClass({
                       <TableCards />
                     </td>
                     <td id="top-right">
-                      <Player index={1} />
+                      <Player index={4} />
                     </td>
                 </tr>
                 <tr className="bottom">
                     <td id="bottom-left">
-                      <Player index={2} />
+                      <Player index={1} />
                     </td>
                     <td id="bottom-middle">
-                        <Player index={3}/>
+                        <Player index={2}/>
                     </td>
                     <td id="bottom-right">
-                      <Player index={4}/>
+                      <Player index={3}/>
                     </td>
                 </tr>
                 </tbody>

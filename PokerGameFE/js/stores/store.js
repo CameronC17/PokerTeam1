@@ -91,12 +91,19 @@ function handleAction(payload) {
     else if (payload.action == Constants.ACTION_CHECK) {
       var result= axios.post("http://localhost:3000/api/games", {user: window.localStorage.user, bet: false, call: false, check: true, fold: false})
            .then(function(result){
-             _currentPlayer= result.data.turn;
+               console.log(result);
+                _currentPlayer= result.data.turn;
                if (result.data.cards.length > 0) {
                    _tcards = result.data.cards;
                }
+
+               if (result.data.chips != null) {
+                   _pchips = result.data.chips;
+               }
+
+               
                TCardStore.emit('update');
-               PChipStore.emit('update');
+               PCardStore.emit('update');
            });
 
     }
@@ -104,8 +111,11 @@ function handleAction(payload) {
       var result= axios.post("http://localhost:3000/api/games", {user: window.localStorage.user, bet: false, call: false, check: false, fold: true})
            .then(function(result){
              _currentPlayer= result.data.turn;
+              if (result.data.chips != null) {
+                   _pchips = result.data.chips;
+               }
               TCardStore.emit('update');
-              PChipStore.emit('update');
+              PCardStore.emit('update');
               console.log("fold");
            });
 
@@ -113,9 +123,13 @@ function handleAction(payload) {
     else if (payload.action == Constants.ACTION_CALL) {
       var result= axios.post("http://localhost:3000/api/games", {user: window.localStorage.user, bet: false, call: true, check: false, fold: false})
            .then(function(result){
+               console.log(result);
              _currentPlayer= result.data.turn;
+              if (result.data.chips != null) {
+                   _pchips = result.data.chips;
+               }
               TCardStore.emit('update');
-              PChipStore.emit('update');
+              PCardStore.emit('update');
               console.log("call");
            });
 
@@ -123,19 +137,25 @@ function handleAction(payload) {
     else if (payload.action == Constants.ACTION_BET) {
       var result= axios.post("http://localhost:3000/api/games", {user: window.localStorage.user, bet: payload.bet, call: false, check: false, fold: false})
            .then(function(result){
-             _currentPlayer= result.data.turn;
-              TCardStore.emit('update');
-              PChipStore.emit('update');
-              console.log("bet");
+                if (result.data.chips != null) {
+                   _pchips = result.data.chips;
+                }
+                _currentPlayer= result.data.turn;
+                TCardStore.emit('update');
+                PCardStore.emit('update');
+                console.log("bet");
            });
 
     }
     else if (payload.action == Constants.START_GAME) {
       var result= axios.post("http://localhost:3000/api/games/new", {user: window.localStorage.user})
            .then(function(result){
-             _pcards = result.data;
-             PCardStore.emit('update');
-             console.log(result);
+                if (result.data.chips != null) {
+                   _pchips = result.data.chips;
+                }
+                _pcards = result.data;
+                PCardStore.emit('update');
+                console.log(result);
            });
     }
 

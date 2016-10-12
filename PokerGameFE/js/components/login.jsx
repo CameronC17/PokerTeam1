@@ -27,6 +27,7 @@ var Login = React.createClass({
       password: e.target.value
     });
   },
+  
   handleUsernameChange: function (e) {
 
     this.setState({
