@@ -4,8 +4,7 @@ var Store= require('../stores/store.js');
 
 var Chips = React.createClass({
   render: function() {
-
-    console.log(this.props.value);
+    
   return (
         <div className="chips">
           <div className="edds" id="chips">

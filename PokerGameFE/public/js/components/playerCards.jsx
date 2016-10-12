@@ -12,7 +12,6 @@ var PlayerCards = React.createClass({
       return (
         <Card key={index} suit={card.suit} cardValue={card.value}/>
       )
-
     });
   }
 

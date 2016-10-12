@@ -60,38 +60,33 @@ appDispatcher.register(handleAction);
 
 function handleAction(payload) {
     if (payload.action == Constants.LOAD_PAGE) {
-        console.log(payload.action);
         _currentPage = payload.page;
         CurrentPage.emit('update');
-    }
-    else if (payload.action == Constants.LOGIN_ACTION) {
-        var result= axios.post("http://localhost:3000/api/users/login", {username: payload.user.username, password: payload.user.password})
+    } else if (payload.action == Constants.LOGIN_ACTION) {
+        console.log(payload.action);
+        var result= axios.post("http://localhost:3001/api/users/login", {username: payload.user.username, password: payload.user.password})
              .then(function(result){
-                console.log(result.status);
                 if(result.status== 200){
                   window.localStorage.setItem('user', result.data.user);
                   window.localStorage.setItem('username', result.data.username);
                  _currentPage = "gamepage";
-                  console.log(_currentPage);
                 }
                 CurrentPage.emit('update');
              });
+
     }
     else if (payload.action == Constants.REGISTER_ACTION) {
-      var result= axios.post("http://localhost:3000/api/users", {username: payload.user.username, password: payload.user.password})
+      var result= axios.post("http://localhost:3001/api/users", {username: payload.user.username, password: payload.user.password})
            .then(function(result){
-              console.log(result.status);
               if(result.status== 201){
                _currentPage = "loginpage";
-                console.log(_currentPage);
               }
               CurrentPage.emit('update');
            });
     }
     else if (payload.action == Constants.ACTION_CHECK) {
-      var result= axios.post("http://localhost:3000/api/games", {user: window.localStorage.user, bet: false, call: false, check: true, fold: false})
+      var result= axios.post("http://localhost:3001/api/games", {user: window.localStorage.user, bet: false, call: false, check: true, fold: false})
            .then(function(result){
-               console.log(result);
                 _currentPlayer= result.data.turn;
                if (result.data.cards.length > 0) {
                    _tcards = result.data.cards;
@@ -108,7 +103,7 @@ function handleAction(payload) {
 
     }
     else if (payload.action == Constants.ACTION_FOLD) {
-      var result= axios.post("http://localhost:3000/api/games", {user: window.localStorage.user, bet: false, call: false, check: false, fold: true})
+      var result= axios.post("http://localhost:3001/api/games", {user: window.localStorage.user, bet: false, call: false, check: false, fold: true})
            .then(function(result){
              _currentPlayer= result.data.turn;
               if (result.data.chips != null) {
@@ -116,26 +111,23 @@ function handleAction(payload) {
                }
               TCardStore.emit('update');
               PCardStore.emit('update');
-              console.log("fold");
            });
 
     }
     else if (payload.action == Constants.ACTION_CALL) {
-      var result= axios.post("http://localhost:3000/api/games", {user: window.localStorage.user, bet: false, call: true, check: false, fold: false})
+      var result= axios.post("http://localhost:3001/api/games", {user: window.localStorage.user, bet: false, call: true, check: false, fold: false})
            .then(function(result){
-               console.log(result);
              _currentPlayer= result.data.turn;
               if (result.data.chips != null) {
                    _pchips = result.data.chips;
                }
               TCardStore.emit('update');
               PCardStore.emit('update');
-              console.log("call");
            });
 
     }
     else if (payload.action == Constants.ACTION_BET) {
-      var result= axios.post("http://localhost:3000/api/games", {user: window.localStorage.user, bet: payload.bet, call: false, check: false, fold: false})
+      var result= axios.post("http://localhost:3001/api/games", {user: window.localStorage.user, bet: payload.bet, call: false, check: false, fold: false})
            .then(function(result){
                 if (result.data.chips != null) {
                    _pchips = result.data.chips;
@@ -143,19 +135,17 @@ function handleAction(payload) {
                 _currentPlayer= result.data.turn;
                 TCardStore.emit('update');
                 PCardStore.emit('update');
-                console.log("bet");
            });
 
     }
     else if (payload.action == Constants.START_GAME) {
-      var result= axios.post("http://localhost:3000/api/games/new", {user: window.localStorage.user})
+      var result= axios.post("http://localhost:3001/api/games/new", {user: window.localStorage.user})
            .then(function(result){
                 if (result.data.chips != null) {
                    _pchips = result.data.chips;
                 }
                 _pcards = result.data;
                 PCardStore.emit('update');
-                console.log(result);
            });
     }
 
