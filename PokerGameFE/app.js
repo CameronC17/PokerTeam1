@@ -1,26 +1,17 @@
 
-var express = require('express');
-var app = express();
-var port = process.env.PORT || 3001;
+var express = require("express");
+var app     = express();
+var path    = require("path");
+var react = require("react");
 
 app.use(express.static(__dirname + '/public'));
+app.use('/bower_components', express.static(__dirname + '/bower_components'));
+app.use('/node_modules', express.static(__dirname + '/node_modules'));
 
-
-// set the view engine
-app.set("view engine" , "jsx");
-
-app.use("/" , function(req, res){
-
-	res.render("index" , {api: process.env.API_URL || "192.10.10.150"});
-
+app.get('/',function(req,res){
+  res.sendFile(path.join(__dirname+'/index.html'));
 });
 
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
-})
+app.listen(3001);
 
-app.listen(port, function() {
-  console.log('> Server up and listening on port ' + port);
-});
-
-module.exports = app;
+console.log("Running at Port 3001");
