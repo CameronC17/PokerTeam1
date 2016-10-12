@@ -1,6 +1,6 @@
 var Constants = require('../constants/constants.js');
 var appDispatcher = require('../dispatchers/appDispatcher.js');
-var Chips= require('./chips.jsx');
+var ChipList= require('./chipList.jsx');
 var PlayerCards= require('./playerCards.jsx');
 
 var Player = React.createClass({
@@ -9,7 +9,7 @@ var Player = React.createClass({
 
   return (
         <div className="player">
-          <Chips />
+          <ChipList index= {this.props.index} />
           <PlayerCards index={this.props.index} />
         </div>
   )

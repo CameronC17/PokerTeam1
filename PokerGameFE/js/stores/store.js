@@ -2,6 +2,8 @@ var EventEmitter = require('events').EventEmitter;
 var appDispatcher = require('../dispatchers/appDispatcher.js');
 var Constants = require('../constants/constants.js');
 var merge = require('merge');
+const emitter= new EventEmitter();
+emitter.setMaxListeners (100);
 
 var gameStage= 0;
 
@@ -35,8 +37,8 @@ var PCardStore = merge(EventEmitter.prototype, {
 
 var PChipStore = merge(EventEmitter.prototype, {
 
-    getPChips: function() {
-        return _pchips
+    getPChips: function(index) {
+        return _pchips[index]
     }
 
 });
@@ -94,6 +96,7 @@ function handleAction(payload) {
                    _tcards = result.data.cards;
                }
                TCardStore.emit('update');
+               PChipStore.emit('update');
            });
 
     }
@@ -102,6 +105,7 @@ function handleAction(payload) {
            .then(function(result){
              _currentPlayer= result.data.turn;
               TCardStore.emit('update');
+              PChipStore.emit('update');
               console.log("fold");
            });
 
@@ -111,6 +115,7 @@ function handleAction(payload) {
            .then(function(result){
              _currentPlayer= result.data.turn;
               TCardStore.emit('update');
+              PChipStore.emit('update');
               console.log("call");
            });
 
@@ -120,6 +125,7 @@ function handleAction(payload) {
            .then(function(result){
              _currentPlayer= result.data.turn;
               TCardStore.emit('update');
+              PChipStore.emit('update');
               console.log("bet");
            });
 

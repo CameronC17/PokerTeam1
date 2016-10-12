@@ -41,11 +41,7 @@ var Game = React.createClass({
   },
   handleStake: function(event){
     var edd= event.target.value;
-    appDispatcher.dispatch({
-      action: Constants.ACTION_BET,
-      bet: edd
-
-    });
+    this.setState({stake: event.target.value});
     console.log(event.target.value);
   },
   handleStakeChange: function (e) {
@@ -62,14 +58,12 @@ var Game = React.createClass({
         <Table />
         <Seat />
         <div className="gamecontent">
-
-
             <div id="gamebuttons">
                 <label htmlFor="stake">Stake:</label><br />
                 <input id="option1" type="button" name="stake" value="100" onClick={this.handleStake} /> edds<br />
                 <input id="option2" type="button" name="stake" value="50" onClick={this.handleStake} /> edds<br />
                 <input id="option3" type="button" name="stake" value="20" onClick={this.handleStake} /> edds<br />
-                <input id="stake" type="number" name="stake" placeholder="Stake" onChange={this.handleStakeChange} required /><br />
+                <input id="stake" type="number" name="stake" value={this.state.stake} placeholder="Stake" onChange={this.handleStakeChange} required /><br />
                 <button type="button" id="check" onClick={this.handleCheck}>Check</button>
                 <button type="button" id="fold" onClick={this.handleFold}>Fold</button>
                 <button type="button" id="bet" onClick={this.handleBet}>Bet</button>
