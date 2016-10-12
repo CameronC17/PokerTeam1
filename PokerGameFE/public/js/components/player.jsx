@@ -33,8 +33,8 @@ var Player = React.createClass({
 
   return (
         <div className="player">
-          <Chips value={this.state.playerChips} />
           <PlayerCards playerCards={this.state.playerCards} />
+          <Chips value={this.state.playerChips} />
         </div>
   )
 }
