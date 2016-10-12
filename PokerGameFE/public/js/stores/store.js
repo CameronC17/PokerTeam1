@@ -96,7 +96,7 @@ function handleAction(payload) {
                    _pchips = result.data.chips;
                }
 
-               
+
                TCardStore.emit('update');
                PCardStore.emit('update');
            });
